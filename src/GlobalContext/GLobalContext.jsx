@@ -7,11 +7,14 @@ export const AppContext = createContext()
 
 function GLobalContext({children}) {
 const [info, setInfo] = useState(data)
-console.log(info)
+
 
   const handleDelete = (id) =>{
-      const deleteItem = info.filter((item)=>item.id !== id);
-      return setInfo(deleteItem)
+      if(window.confirm('Deseja excluir?')){
+        const deleteItem = info.filter((item)=>item.id !== id);
+        return setInfo(deleteItem)
+      }
+      
   }
 
   const refreshData = () =>{
